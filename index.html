@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>The 10 Most Dangerous Jobs in America</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", { packages: ["corechart"] }).then(function () {
+
+      var data1 = google.visualization.arrayToDataTable([
+        ['Occupation', 'Fatal injury rate per 100,000'],
+        ['Landscaping & Groundskeeping', 20.2],
+        ['Construction Trades', 21],
+        ['Structural Iron & Steel', 23.6],
+        ['Farming & Agriculture', 24.7],
+        ['Truck Drivers & Transportation Workers', 26],
+        ['Refuse & Recycle Material Collectors', 44.3],
+        ['Roofers', 51.5],
+        ['Aircraft Pilots & Flight Engineers', 58.9],
+        ['Fishers', 77.4],
+        ['Logging', 97.6],
+
+      ]);
+
+      var options1 = {
+        title: 'Fatal work injury rates per 100,000 full-time equivalent workers by selected occupations, 2018',
+        height: 600,
+        legend: { position: 'none' }
+      };
+
+      var data2 = google.visualization.arrayToDataTable([
+        ['Occupation', 'Median Salary'],
+        ['Landscaping & Groundskeeping', 47030],
+        ['Construction Trades', 65230],
+        ['Structural Iron & Steel', 52770],
+        ['Farming & Agriculture', 24620],
+        ['Truck Drivers & Transportation Workers', 24700],
+        ['Refuse & Recycle Material Collectors', 36190],
+        ['Roofers', 39970],
+        ['Aircraft Pilots & Flight Engineers', 137330],
+        ['Fishers', 28310],
+        ['Logging', 40650],
+
+      ]);
+
+      var options2 = {
+        title: 'Median salaries of selected occupations, 2018',
+        height: 600,
+        legend: { position: 'none' }
+      };
+
+      var data3 = google.visualization.arrayToDataTable([
+        ['Age', 'Number of fatal injuries'],
+        ['Under 16 years', 13],
+        ['16 to 17 years', 7],
+        ['18 to19 years', 62],
+        ['20 to 24 years', 293],
+        ['25 to 34 years', 872],
+        ['35 to 44 years', 907],
+        ['45 to 54 years', 1059],
+        ['55 to 64 years', 1155],
+        ['65 years and over', 775],
+
+      ]);
+
+      var options3 = {
+        title: 'Number of fatal injuries by age, 2018',
+        height: 600,
+        legend: { position: 'right' }
+      };
+
+      var data4 = google.visualization.arrayToDataTable([
+        ['Race', 'Number of fatal injuries'],
+        ['White', 3405],
+        ['Black or African American', 615],
+        ['Hispanic or Latino', 903],
+        ['American Indian or Alaskan Native', 38],
+        ['Asain', 144],
+        ['Native Hawaiian or Pacific Islander', 17],
+        ['Multiple races', 9],
+        ['Other race or not reported', 57],
+
+      ]);
+
+      var options4 = {
+        title: 'Number of fatal injuries by race, 2018',
+        height: 600,
+        legend: { position: 'right' }
+      };
+
+      var chart = new google.visualization.ColumnChart(document.getElementById('line_chart'));
+      var chart2 = new google.visualization.PieChart(document.getElementById('line_chart2'));
+      //find the appropriate visualization code to draw a line chart and place it in the div below called line_chart
+
+      var menu = document.getElementById('thedropdown');
+      var menu2 = document.getElementById('thedropdown2');
+
+      menu.addEventListener('change', drawChart, false);
+      menu2.addEventListener('change', drawChart, false);
+
+      drawChart();
+      function drawChart() {
+        switch (menu.selectedIndex) {
+          case 1:
+            chart.draw(data2, options2);
+            break;
+
+          default:
+            chart.draw(data1, options1);
+            break;
+        }
+        switch (menu2.selectedIndex) {
+          case 1:
+            chart2.draw(data4, options4);
+            break;
+
+          default:
+            chart2.draw(data3, options3);
+            break;
+        }
+      }
+    });
+  </script>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow p-2 mb-4 bg-white" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="http://www.jakeruff.com/">jakeruff.com</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#charts">Charts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-image text-white">
+    <div class="container text-center">
+      <h1>The 10 Most Dangerous Jobs in America</h1>
+      <p class="lead">According to the Bureau of Labor Statistics</p>
+    </div>
+
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About this page</h2>
+          <p class="lead">This is a data vizualization and charting project for my coding & data skills class
+            at Texas State University. The aim for this project was to become familiar with implementing interactive
+            Google Charts. The information presented in these charts was pulled from
+            the National Census of Fatal Occupational Injuries in 2018 from the Bureau of Labor Statistics. <br></br>
+            The data used can be found at the link here: <a href="https://www.bls.gov/news.release/pdf/cfoi.pdf">2018
+              CFOI Report</a>
+          </p>
+          <ul>
+            <li>There were 5,250 workplace deaths last year, a slight increase from 2017.</li>
+            <li>The most common workplace deaths were related to transportation, with transportation accidents
+              accounting for more than 2,000 work-related deaths.</li>
+            <li>Incidents involving contact with objects and equipment increased 13 percent (from 695 to 786), driven by
+              a 39 percent increase in workers caught in running equipment or machinery and a 17 percent increase in
+              workers struck by falling objects or equipment.</li>
+            <li>Fatal falls, slips, and trips decreased 11 percent to 791, after reaching a series high of 887 in 2017.
+              This decline was due to a 14 percent drop in falls to a lower level (713 to 615), the lowest total since
+              2013.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="charts" class="bg-light">
+    <div class="container">
+      <div class="row" justify-content-center>
+        <div class="col-lg-12 mx-auto">
+          <h2 align="center">Fatal Injury Rates & Median Salaries</h2>
+          <select class="select-css" id="thedropdown">
+            <option selected>Fatal Injury Rates</option>
+            <option>Median Salaries</option>
+          </select>
+          <div id="line_chart"></div>
+          <br></br><br></br>
+          <h2 align="center">2018 Fatal Injuries by Age and Race</h2>
+          <select class="select-css" id="thedropdown2">
+            <option selected>Age</option>
+            <option>Race</option>
+          </select>
+          <div id="line_chart2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
